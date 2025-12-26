@@ -1,5 +1,4 @@
-const admin = require('firebase-admin');
-require('dotenv').config();
+import admin from 'firebase-admin';
 
 // Initialize Firebase Admin
 if (!admin.apps.length) {

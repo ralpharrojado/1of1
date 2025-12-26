@@ -1,6 +1,7 @@
 {
   "name": "1of1-backend",
   "version": "1.0.0",
+  "type": "module",
   "description": "1of1 Luxury Editions Backend",
   "main": "api.js",
   "scripts": {
