@@ -1,69 +1,153 @@
 <!DOCTYPE html>
-<html class="dark" lang="en">
-<head>
-    <meta charset="utf-8"/>
-    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-    <title>1of1 - About</title>
-    <link href="https://fonts.googleapis.com" rel="preconnect"/>
-    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
-    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet"/>
-    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-    <script id="tailwind-config">
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>1of1 - About</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
         tailwind.config = {
             darkMode: "class",
             theme: {
                 extend: {
                     colors: {
-                        "primary": "#D4AF37",
-                        "background-dark": "#050505",
-                        "text-cream": "#F2F0E9",
+                        "primary": "#D4AF37", // Luxury Gold
+                        "primary-dim": "#8A7020",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#050505", // Deep Black
+                        "card-dark": "#0F0F0F", // Almost Black
+                        "text-cream": "#F2F0E9", // Soft Cream
                         "text-muted": "#888888",
                     },
                     fontFamily: {
                         "sans": ["Manrope", "sans-serif"],
                         "serif": ["Playfair Display", "serif"],
                     },
-                }
+                    borderRadius: {"DEFAULT": "0px", "lg": "4px", "xl": "8px", "full": "9999px"}, // Sharper borders for gallery feel
+                    animation: {
+                        'fadeIn': 'fadeIn 1.2s ease-out forwards',
+                        'fadeInUp': 'fadeInUp 1s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                },
             },
         }
     </script>
 </head>
-<body class="dark:bg-background-dark text-gray-900 dark:text-text-cream font-sans">
-<header class="fixed top-0 w-full z-50 bg-background-dark/90 backdrop-blur-md border-b border-white/10">
-    <div class="px-6 md:px-12 py-5 flex items-center justify-between max-w-[1440px] mx-auto w-full">
-        <div class="flex items-center gap-3 cursor-pointer" onclick="navigate('home')">
-            <span class="material-symbols-outlined text-primary text-2xl">diamond</span>
-            <h1 class="text-xl font-bold tracking-widest font-serif">1of1</h1>
-        </div>
-        <nav class="hidden md:flex items-center gap-10">
-            <a class="text-xs font-medium uppercase tracking-widest hover:text-primary transition-colors cursor-pointer" onclick="navigate('gallery')">Gallery</a>
-            <a class="text-xs font-medium uppercase tracking-widest text-primary cursor-pointer">About</a>
-            <a class="text-xs font-medium uppercase tracking-widest hover:text-primary transition-colors cursor-pointer" onclick="navigate('bid')">How to Bid</a>
-        </nav>
-    </div>
+<body class="bg-background-light dark:bg-background-dark text-gray-900 dark:text-text-cream font-sans overflow-x-hidden min-h-screen flex flex-col selection:bg-primary/30 selection:text-white">
+<header class="fixed top-0 w-full z-50 transition-all duration-300 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-black/5 dark:border-white/10">
+<div class="px-6 md:px-12 py-5 flex items-center justify-between max-w-[1440px] mx-auto w-full">
+<div class="flex items-center gap-3 cursor-pointer" onclick="navigate('home')">
+<span class="material-symbols-outlined text-primary text-2xl">diamond</span>
+<h1 class="text-xl font-bold tracking-widest font-serif">1of1</h1>
+</div>
+<nav class="hidden md:flex items-center gap-10">
+<a class="text-xs font-medium uppercase tracking-[0.2em] hover:text-primary transition-colors text-gray-500 dark:text-text-muted cursor-pointer" onclick="navigate('gallery')">Gallery</a>
+<a class="text-xs font-medium uppercase tracking-[0.2em] text-primary cursor-pointer">About</a>
+<a class="text-xs font-medium uppercase tracking-[0.2em] hover:text-primary transition-colors text-gray-500 dark:text-text-muted cursor-pointer" onclick="navigate('bid')">How to Bid</a>
+</nav>
+<div class="flex items-center gap-6">
+<a class="text-xs font-medium uppercase tracking-[0.2em] hover:text-primary transition-colors hidden sm:block text-gray-500 dark:text-text-muted cursor-pointer" onclick="navigate('account')">Account</a>
+<button class="flex items-center justify-center size-10 border border-black/10 dark:border-white/10 hover:border-primary text-current transition-colors rounded-sm" onclick="navigate('cart')">
+<span class="material-symbols-outlined text-lg">shopping_bag</span>
+</button>
+<button class="md:hidden flex items-center justify-center size-10 text-current" onclick="toggleMobileMenu()">
+<span class="material-symbols-outlined text-2xl">menu</span>
+</button>
+</div>
+</div>
 </header>
-<main class="flex-grow flex flex-col items-center justify-center pt-32 pb-24 px-6 md:px-12 w-full min-h-screen">
-    <div class="max-w-3xl text-center">
-        <h2 class="text-5xl md:text-7xl font-serif font-medium tracking-tight text-text-cream mb-8">About 1of1</h2>
-        <p class="text-lg text-text-muted leading-relaxed mb-8">
-            Coming soon. Learn about our vision, mission, and the story behind 1of1.
+<main class="flex-grow flex flex-col items-center pt-32 pb-16 px-6 w-full max-w-[1440px] mx-auto relative z-10">
+<div class="fixed top-24 left-1/2 -translate-x-1/2 w-[80vw] h-[70vh] bg-primary/5 blur-[120px] rounded-full pointer-events-none -z-10"></div>
+<div class="text-center mb-12 max-w-xl mx-auto animate-fadeInUp">
+<h2 class="text-3xl md:text-5xl font-serif text-black dark:text-white tracking-tight mb-4">The Philosophy of Scarcity</h2>
+<div class="h-px w-16 bg-primary/40 mx-auto my-6"></div>
+<p class="text-xs md:text-sm font-sans tracking-[0.2em] uppercase text-gray-500 dark:text-text-muted leading-loose">
+            In a world of infinite copies, we create permanent singularity.
         </p>
-        <button onclick="navigate('home')" class="px-8 py-3 border border-primary text-primary hover:bg-primary hover:text-black transition-all">
-            Return Home
-        </button>
-    </div>
+</div>
+<div class="w-full max-w-2xl mx-auto">
+<div class="animate-fadeInUp" style="animation-delay: 0.1s;">
+<div class="bg-white dark:bg-card-dark border border-primary/20 p-8 md:p-10 relative overflow-hidden transition-all hover:border-primary/40 mb-8">
+<div class="absolute top-0 left-0 w-12 h-12 border-t border-l border-primary/30"></div>
+<div class="absolute bottom-0 right-0 w-12 h-12 border-b border-r border-primary/30"></div>
+<h3 class="text-xl font-serif text-black dark:text-white mb-4">What is 1of1?</h3>
+<p class="text-gray-600 dark:text-text-muted text-sm leading-7 font-light mb-4">
+                1of1 is a collection of digitally authenticated, one-of-a-kind garments. Each piece is limited to a single production run, creating absolute scarcity in the physical world and permanence in the digital realm. We bridge high fashion with blockchain verification, ensuring that every owner possesses not just a garment, but a verifiable piece of art history.
+            </p>
+</div>
+</div>
+<div class="animate-fadeInUp" style="animation-delay: 0.2s;">
+<div class="bg-white dark:bg-card-dark border border-primary/20 p-8 md:p-10 relative overflow-hidden transition-all hover:border-primary/40">
+<div class="absolute top-0 left-0 w-12 h-12 border-t border-l border-primary/30"></div>
+<div class="absolute bottom-0 right-0 w-12 h-12 border-b border-r border-primary/30"></div>
+<div class="flex items-start gap-4 mb-4">
+<span class="material-symbols-outlined text-primary text-2xl">verified</span>
+<h3 class="text-xl font-serif text-black dark:text-white">The 1of1 Guarantee</h3>
+</div>
+<p class="text-gray-600 dark:text-text-muted text-sm leading-7 font-light">
+                We do not reprint. We do not restock. Once an edition finds its owner, the pattern is retired forever. This is our guarantee of absolute scarcity and permanence in an age of mass production. Every 1of1 piece is a permanent artifact.
+            </p>
+</div>
+</div>
+</div>
 </main>
+<footer class="w-full border-t border-white/5 py-12 bg-background-dark z-10">
+<div class="max-w-[1440px] mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center gap-2 opacity-50">
+<span class="material-symbols-outlined text-lg">diamond</span>
+<p class="text-xs tracking-widest text-text-muted">1of1 © 2023</p>
+</div>
+<div class="flex gap-8">
+<a class="text-text-muted hover:text-primary text-xs uppercase tracking-[0.2em] transition-colors cursor-pointer" onclick="navigate('instagram')">Instagram</a>
+<a class="text-text-muted hover:text-primary text-xs uppercase tracking-[0.2em] transition-colors cursor-pointer" onclick="navigate('twitter')">Twitter</a>
+<a class="text-text-muted hover:text-primary text-xs uppercase tracking-[0.2em] transition-colors cursor-pointer" onclick="navigate('legal')">Legal</a>
+</div>
+</div>
+</footer>
 </body>
 <script>
-    const API_URL = 'https://1of1-indol.vercel.app/api';
-    function navigate(page) {
-        const pages = {
-            'home': 'index.html',
-            'gallery': 'hall-of-fame.html',
-            'bid': 'how-to-bid.html',
-        };
-        if (pages[page]) window.location.href = pages[page];
+  const API_URL = 'https://1of1-indol.vercel.app/api';
+
+  function toggleMobileMenu() {
+    const menu = document.getElementById('mobileMenu');
+    if (menu) menu.classList.toggle('hidden');
+  }
+
+  function navigate(page) {
+    const pages = {
+      'home': 'index.html',
+      'gallery': 'hall-of-fame.html',
+      'bid': 'how-to-bid.html',
+      'about': 'about.html',
+      'journal': 'journal.html',
+      'account': 'account.html',
+      'cart': 'cart.html',
+      'legal': 'legal.html',
+      'instagram': 'https://instagram.com',
+      'twitter': 'https://twitter.com'
+    };
+    
+    const destination = pages[page];
+    if (destination) {
+      if (destination.startsWith('http')) {
+        window.open(destination, '_blank');
+      } else {
+        window.location.href = destination;
+      }
     }
+  }
 </script>
 </html>
