@@ -177,14 +177,15 @@
   function navigate(page) {
     const pages = {
       'home': 'index.html',
-      'gallery': 'gallery.html',
+      'gallery': 'hall-of-fame.html',
+      'bid': 'how-to-bid.html',
       'about': 'about.html',
       'journal': 'journal.html',
       'account': 'account.html',
       'cart': 'cart.html',
+      'legal': 'legal.html',
       'instagram': 'https://instagram.com',
-      'twitter': 'https://twitter.com',
-      'legal': 'legal.html'
+      'twitter': 'https://twitter.com'
     };
     
     const destination = pages[page];
@@ -192,9 +193,7 @@
       if (destination.startsWith('http')) {
         window.open(destination, '_blank');
       } else {
-        // Local navigation - in production, replace with actual page
-        console.log(`Navigating to: ${destination}`);
-        alert(`Opening ${page} page...`);
+        window.location.href = destination;
       }
     }
   }
