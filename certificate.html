@@ -168,19 +168,22 @@
     const pages = {
       'home': 'index.html',
       'gallery': 'hall-of-fame.html',
+      'bid': 'how-to-bid.html',
       'about': 'about.html',
       'journal': 'journal.html',
       'account': 'account.html',
-      'cart': 'cart.html'
+      'cart': 'cart.html',
+      'legal': 'legal.html',
+      'instagram': 'https://instagram.com',
+      'twitter': 'https://twitter.com'
     };
     
     const destination = pages[page];
     if (destination) {
-      console.log(`Navigating to: ${destination}`);
-      if (page === 'home') {
-        window.location.href = destination;
+      if (destination.startsWith('http')) {
+        window.open(destination, '_blank');
       } else {
-        alert(`Opening ${page} page...`);
+        window.location.href = destination;
       }
     }
   }
