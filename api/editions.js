@@ -49,24 +49,25 @@ export default async function handler(req, res) {
         return res.status(401).json({ error: 'Unauthorized' });
       }
 
-      const { number, title, description, imageUrl, startDate, endDate } = req.body;
-      if (!number || !title) {
-        return res.status(400).json({ error: 'Missing required fields: number, title' });
+      const { id, name, description, image, price, status, auctionStartDate, auctionEndDate } = req.body;
+      if (!id || !name) {
+        return res.status(400).json({ error: 'Missing required fields: id, name' });
       }
 
       const newEdition = {
-        number,
-        title,
+        id,
+        name,
         description: description || '',
-        imageUrl: imageUrl || '',
-        startDate: startDate || new Date().toISOString(),
-        endDate: endDate || new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
-        createdAt: new Date().toISOString(),
-        status: 'active'
+        image: image || '',
+        price: price || 0,
+        status: status || 'upcoming',
+        auctionStartDate: auctionStartDate || new Date().toISOString(),
+        auctionEndDate: auctionEndDate || new Date(Date.now() + 7 * 24 * 60 * 60 * 1000).toISOString(),
+        createdAt: new Date().toISOString()
       };
 
-      const docRef = await db.collection('editions').doc(number.toString()).set(newEdition);
-      return res.status(201).json({ id: number, ...newEdition });
+      const docRef = await db.collection('editions').doc(id.toString()).set(newEdition);
+      return res.status(201).json({ id, ...newEdition });
     }
 
     if (req.method === 'PUT') {

@@ -49,21 +49,19 @@ export default async function handler(req, res) {
         return res.status(401).json({ error: 'Unauthorized' });
       }
 
-      const { name, email, phone, city, country, bio, profileImage } = req.body;
-      if (!name || !email) {
-        return res.status(400).json({ error: 'Missing required fields: name, email' });
+      const { owName, owEdition, owEditionId, owDate, owImage, owDescription } = req.body;
+      if (!owName) {
+        return res.status(400).json({ error: 'Missing required field: owName' });
       }
 
       const newOwner = {
-        name,
-        email,
-        phone: phone || '',
-        city: city || '',
-        country: country || '',
-        bio: bio || '',
-        profileImage: profileImage || '',
-        createdAt: new Date().toISOString(),
-        totalBids: 0
+        name: owName,
+        edition: owEdition || '',
+        editionId: owEditionId || '',
+        date: owDate || new Date().toISOString(),
+        image: owImage || '',
+        description: owDescription || '',
+        createdAt: new Date().toISOString()
       };
 
       const docRef = await db.collection('owners').add(newOwner);
