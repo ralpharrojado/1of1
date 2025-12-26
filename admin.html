@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>1of1 Admin Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700&family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet"/>
+</head>
+<body class="bg-gray-900 text-white font-sans">
+<div class="min-h-screen flex">
+    <!-- Sidebar -->
+    <div class="w-64 bg-gray-800 border-r border-gray-700 p-6">
+        <h1 class="text-2xl font-bold mb-8">1of1 Admin</h1>
+        <nav class="space-y-4">
+            <button onclick="showSection('editions')" class="w-full text-left px-4 py-2 rounded hover:bg-gray-700 transition-colors">📦 Editions</button>
+            <button onclick="showSection('owners')" class="w-full text-left px-4 py-2 rounded hover:bg-gray-700 transition-colors">👑 Owners</button>
+            <button onclick="showSection('bids')" class="w-full text-left px-4 py-2 rounded hover:bg-gray-700 transition-colors">💰 Bids</button>
+            <button onclick="logout()" class="w-full text-left px-4 py-2 rounded hover:bg-red-700 transition-colors">🚪 Logout</button>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="flex-1 p-8">
+        <!-- Login Section -->
+        <div id="loginSection" class="max-w-md mx-auto mt-20">
+            <div class="bg-gray-800 p-8 rounded-lg border border-gray-700">
+                <h2 class="text-2xl font-bold mb-6">Admin Login</h2>
+                <input type="password" id="adminToken" placeholder="Enter admin token" class="w-full px-4 py-2 rounded bg-gray-700 border border-gray-600 mb-4">
+                <button onclick="login()" class="w-full bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded transition-colors">Login</button>
+            </div>
+        </div>
+
+        <!-- Editions Section -->
+        <div id="editionsSection" class="hidden">
+            <h2 class="text-3xl font-bold mb-6">Manage Editions</h2>
+            
+            <!-- Add New Edition -->
+            <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
+                <h3 class="text-xl font-bold mb-4">Add New Edition</h3>
+                <div class="grid grid-cols-2 gap-4">
+                    <input type="text" id="edId" placeholder="Edition ID (e.g., 042)" class="px-4 py-2 rounded bg-gray-700 border border-gray-600">
+                    <input type="text" id="edName" placeholder="Name" class="px-4 py-2 rounded bg-gray-700 border border-gray-600">
+                    <input type="text" id="edDescription" placeholder="Description" class="col-span-2 px-4 py-2 rounded bg-gray-700 border border-gray-600">
+                    <input type="text" id="edImage" placeholder="Image URL" class="col-span-2 px-4 py-2 rounded bg-gray-700 border border-gray-600">
+                    <input type="number" id="edPrice" placeholder="Price" class="px-4 py-2 rounded bg-gray-700 border border-gray-600">
+                    <select id="edStatus" class="px-4 py-2 rounded bg-gray-700 border border-gray-600">
+                        <option>upcoming</option>
+                        <option>active</option>
+                        <option>sold</option>
+                    </select>
+                    <input type="date" id="edStartDate" class="px-4 py-2 rounded bg-gray-700 border border-gray-600">
+                    <input type="date" id="edEndDate" class="px-4 py-2 rounded bg-gray-700 border border-gray-600">
+                </div>
+                <button onclick="addEdition()" class="mt-4 bg-green-600 hover:bg-green-700 px-6 py-2 rounded transition-colors">Add Edition</button>
+            </div>
+
+            <!-- Editions List -->
+            <div id="editionsList" class="space-y-4"></div>
+        </div>
+
+        <!-- Owners Section -->
+        <div id="ownersSection" class="hidden">
+            <h2 class="text-3xl font-bold mb-6">Manage Owners (Hall of Fame)</h2>
+            
+            <!-- Add New Owner -->
+            <div class="bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
+                <h3 class="text-xl font-bold mb-4">Add New Owner</h3>
+                <div class="grid grid-cols-2 gap-4">
+                    <input type="text" id="owName" placeholder="Owner Name" class="px-4 py-2 rounded bg-gray-700 border border-gray-600">
+                    <input type="text" id="owEdition" placeholder="Edition Name" class="px-4 py-2 rounded bg-gray-700 border border-gray-600">
+                    <input type="text" id="owEditionId" placeholder="Edition ID" class="px-4 py-2 rounded bg-gray-700 border border-gray-600">
+                    <input type="date" id="owDate" class="px-4 py-2 rounded bg-gray-700 border border-gray-600">
+                    <input type="text" id="owImage" placeholder="Image URL" class="col-span-2 px-4 py-2 rounded bg-gray-700 border border-gray-600">
+                    <input type="text" id="owDescription" placeholder="Description" class="col-span-2 px-4 py-2 rounded bg-gray-700 border border-gray-600">
+                </div>
+                <button onclick="addOwner()" class="mt-4 bg-green-600 hover:bg-green-700 px-6 py-2 rounded transition-colors">Add Owner</button>
+            </div>
+
+            <!-- Owners List -->
+            <div id="ownersList" class="space-y-4"></div>
+        </div>
+
+        <!-- Bids Section -->
+        <div id="bidsSection" class="hidden">
+            <h2 class="text-3xl font-bold mb-6">Manage Bids</h2>
+            
+            <!-- Select Edition -->
+            <div class="mb-6">
+                <select id="bidEditionSelect" onchange="loadBids()" class="px-4 py-2 rounded bg-gray-700 border border-gray-600">
+                    <option value="">Select an edition to view bids...</option>
+                </select>
+            </div>
+
+            <!-- Bids List -->
+            <div id="bidsList" class="space-y-4"></div>
+        </div>
+    </div>
+</div>
+
+<script>
+    const API_URL = 'http://localhost:3001/api'; // Change to your Vercel URL in production
+    let adminToken = localStorage.getItem('adminToken');
+
+    if (adminToken) {
+        document.getElementById('loginSection').classList.add('hidden');
+        showSection('editions');
+        loadEditions();
+        loadOwners();
+        loadBidsEditions();
+    }
+
+    function login() {
+        const token = document.getElementById('adminToken').value;
+        if (token) {
+            adminToken = token;
+            localStorage.setItem('adminToken', token);
+            document.getElementById('loginSection').classList.add('hidden');
+            showSection('editions');
+            loadEditions();
+        }
+    }
+
+    function logout() {
+        localStorage.removeItem('adminToken');
+        adminToken = null;
+        document.getElementById('loginSection').classList.remove('hidden');
+        ['editionsSection', 'ownersSection', 'bidsSection'].forEach(id => {
+            document.getElementById(id).classList.add('hidden');
+        });
+    }
+
+    function showSection(section) {
+        ['editionsSection', 'ownersSection', 'bidsSection'].forEach(id => {
+            document.getElementById(id).classList.add('hidden');
+        });
+        document.getElementById(section + 'Section').classList.remove('hidden');
+    }
+
+    // ========== EDITIONS ==========
+    async function loadEditions() {
+        try {
+            const res = await fetch(`${API_URL}/editions`);
+            const editions = await res.json();
+            const html = editions.map(ed => `
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                    <div class="flex justify-between items-start mb-4">
+                        <div>
+                            <h3 class="text-xl font-bold">${ed.name}</h3>
+                            <p class="text-gray-400">ID: ${ed.id}</p>
+                        </div>
+                        <span class="px-3 py-1 rounded text-sm ${ed.status === 'active' ? 'bg-green-600' : ed.status === 'upcoming' ? 'bg-blue-600' : 'bg-gray-600'}">${ed.status}</span>
+                    </div>
+                    <p class="text-gray-300 mb-2">${ed.description}</p>
+                    <p class="text-gray-400 text-sm mb-4">Price: $${ed.price || 'TBD'}</p>
+                    <button onclick="deleteEdition('${ed.id}')" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded text-sm transition-colors">Delete</button>
+                </div>
+            `).join('');
+            document.getElementById('editionsList').innerHTML = html;
+        } catch (error) {
+            console.error('Error loading editions:', error);
+        }
+    }
+
+    async function addEdition() {
+        const edition = {
+            id: document.getElementById('edId').value,
+            name: document.getElementById('edName').value,
+            description: document.getElementById('edDescription').value,
+            image: document.getElementById('edImage').value,
+            price: parseInt(document.getElementById('edPrice').value),
+            status: document.getElementById('edStatus').value,
+            auctionStartDate: document.getElementById('edStartDate').value,
+            auctionEndDate: document.getElementById('edEndDate').value,
+        };
+
+        try {
+            const res = await fetch(`${API_URL}/editions`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${adminToken}`
+                },
+                body: JSON.stringify(edition)
+            });
+            const result = await res.json();
+            if (res.ok) {
+                alert('Edition added successfully!');
+                loadEditions();
+                // Clear form
+                ['edId', 'edName', 'edDescription', 'edImage', 'edPrice', 'edStatus', 'edStartDate', 'edEndDate'].forEach(id => {
+                    document.getElementById(id).value = '';
+                });
+            } else {
+                alert('Error: ' + result.error);
+            }
+        } catch (error) {
+            alert('Error adding edition: ' + error.message);
+        }
+    }
+
+    async function deleteEdition(id) {
+        if (confirm('Delete this edition?')) {
+            try {
+                const res = await fetch(`${API_URL}/editions/${id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Authorization': `Bearer ${adminToken}`
+                    }
+                });
+                if (res.ok) {
+                    alert('Edition deleted!');
+                    loadEditions();
+                } else {
+                    alert('Error deleting edition');
+                }
+            } catch (error) {
+                alert('Error: ' + error.message);
+            }
+        }
+    }
+
+    // ========== OWNERS ==========
+    async function loadOwners() {
+        try {
+            const res = await fetch(`${API_URL}/owners`);
+            const owners = await res.json();
+            const html = owners.map(owner => `
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h3 class="text-xl font-bold">${owner.name}</h3>
+                            <p class="text-gray-400">${owner.edition}</p>
+                            <p class="text-gray-500 text-sm">Acquired: ${owner.acquiredDate}</p>
+                        </div>
+                        <button onclick="deleteOwner('${owner.id}')" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded text-sm transition-colors">Delete</button>
+                    </div>
+                </div>
+            `).join('');
+            document.getElementById('ownersList').innerHTML = html;
+        } catch (error) {
+            console.error('Error loading owners:', error);
+        }
+    }
+
+    async function addOwner() {
+        const owner = {
+            name: document.getElementById('owName').value,
+            edition: document.getElementById('owEdition').value,
+            editionId: document.getElementById('owEditionId').value,
+            acquiredDate: document.getElementById('owDate').value,
+            image: document.getElementById('owImage').value,
+            description: document.getElementById('owDescription').value,
+        };
+
+        try {
+            const res = await fetch(`${API_URL}/owners`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${adminToken}`
+                },
+                body: JSON.stringify(owner)
+            });
+            const result = await res.json();
+            if (res.ok) {
+                alert('Owner added successfully!');
+                loadOwners();
+                ['owName', 'owEdition', 'owEditionId', 'owDate', 'owImage', 'owDescription'].forEach(id => {
+                    document.getElementById(id).value = '';
+                });
+            } else {
+                alert('Error: ' + result.error);
+            }
+        } catch (error) {
+            alert('Error adding owner: ' + error.message);
+        }
+    }
+
+    async function deleteOwner(id) {
+        if (confirm('Delete this owner from hall of fame?')) {
+            try {
+                const res = await fetch(`${API_URL}/owners/${id}`, {
+                    method: 'DELETE',
+                    headers: {
+                        'Authorization': `Bearer ${adminToken}`
+                    }
+                });
+                if (res.ok) {
+                    alert('Owner deleted!');
+                    loadOwners();
+                } else {
+                    alert('Error deleting owner');
+                }
+            } catch (error) {
+                alert('Error: ' + error.message);
+            }
+        }
+    }
+
+    // ========== BIDS ==========
+    async function loadBidsEditions() {
+        try {
+            const res = await fetch(`${API_URL}/editions`);
+            const editions = await res.json();
+            const html = editions.map(ed => `<option value="${ed.id}">${ed.name} (${ed.id})</option>`).join('');
+            document.getElementById('bidEditionSelect').innerHTML = '<option value="">Select an edition...</option>' + html;
+        } catch (error) {
+            console.error('Error loading editions for bids:', error);
+        }
+    }
+
+    async function loadBids() {
+        const editionId = document.getElementById('bidEditionSelect').value;
+        if (!editionId) return;
+
+        try {
+            const res = await fetch(`${API_URL}/bids/${editionId}`);
+            const bids = await res.json();
+            const html = bids.map(bid => `
+                <div class="bg-gray-800 p-6 rounded-lg border border-gray-700">
+                    <div class="flex justify-between items-start mb-2">
+                        <div>
+                            <h3 class="text-lg font-bold">${bid.bidder}</h3>
+                            <p class="text-gray-400">${bid.email}</p>
+                        </div>
+                        <span class="text-2xl font-bold text-green-400">$${bid.amount}</span>
+                    </div>
+                    <p class="text-gray-500 text-sm mb-4">${new Date(bid.timestamp).toLocaleString()}</p>
+                    <div class="flex gap-2">
+                        <button onclick="acceptBid('${bid.id}')" class="bg-green-600 hover:bg-green-700 px-4 py-2 rounded text-sm transition-colors">Accept</button>
+                        <button onclick="rejectBid('${bid.id}')" class="bg-red-600 hover:bg-red-700 px-4 py-2 rounded text-sm transition-colors">Reject</button>
+                    </div>
+                </div>
+            `).join('');
+            document.getElementById('bidsList').innerHTML = html || '<p class="text-gray-400">No bids yet</p>';
+        } catch (error) {
+            console.error('Error loading bids:', error);
+        }
+    }
+
+    async function acceptBid(id) {
+        try {
+            const res = await fetch(`${API_URL}/bids/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${adminToken}`
+                },
+                body: JSON.stringify({ status: 'accepted' })
+            });
+            if (res.ok) {
+                alert('Bid accepted!');
+                loadBids();
+            }
+        } catch (error) {
+            alert('Error: ' + error.message);
+        }
+    }
+
+    async function rejectBid(id) {
+        try {
+            const res = await fetch(`${API_URL}/bids/${id}`, {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${adminToken}`
+                },
+                body: JSON.stringify({ status: 'rejected' })
+            });
+            if (res.ok) {
+                alert('Bid rejected!');
+                loadBids();
+            }
+        } catch (error) {
+            alert('Error: ' + error.message);
+        }
+    }
+</script>
+</body>
+</html>

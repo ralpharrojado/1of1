@@ -1,0 +1,55 @@
+{
+  "editions": {
+    "042": {
+      "name": "The Midnight Bloom",
+      "description": "Hand-woven silk blend with distinctive noir threading",
+      "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuCj5aHCOTDs5hsS9N0fVk4jQUjHifz-RxVKpgDb2lqg85_w1Fm5S2Tin1NEpPPpGptFy3xBNzhNSJO3Z974Iun0tsqcc46-Q9iobq0xRyWPD5rGxDiTBQcIUVeiUmoMDQrKnBFuFN2ehzuzQTLgjZcbd6SLFL5AHVJJrxaXRv-xw0UUQWql1W5cda6oF-25yIIkZ1KN4qW9v2rAsA3vVOaVfQEiBhDFe57GpCb8oLycvceOVi5kQby6T7Q5Ec-gcWh2TY1pPqUARas",
+      "status": "upcoming",
+      "price": 12500,
+      "auctionStartDate": "2024-02-01",
+      "auctionEndDate": "2024-02-10",
+      "material": "Silk blend",
+      "color": "Noir",
+      "createdAt": "2024-01-01T00:00:00Z"
+    },
+    "043": {
+      "name": "Void Walker",
+      "description": "Heavyweight cotton with crushed velvet appliqué and gold threading",
+      "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuCj5aHCOTDs5hsS9N0fVk4jQUjHifz-RxVKpgDb2lqg85_w1Fm5S2Tin1NEpPPpGptFy3xBNzhNSJO3Z974Iun0tsqcc46-Q9iobq0xRyWPD5rGxDiTBQcIUVeiUmoMDQrKnBFuFN2ehzuzQTLgjZcbd6SLFL5AHVJJrxaXRv-xw0UUQWql1W5cda6oF-25yIIkZ1KN4qW9v2rAsA3vVOaVfQEiBhDFe57GpCb8oLycvceOVi5kQby6T7Q5Ec-gcWh2TY1pPqUARas",
+      "status": "upcoming",
+      "price": 14000,
+      "auctionStartDate": "2024-02-15",
+      "auctionEndDate": "2024-02-25",
+      "material": "Cotton",
+      "color": "Black",
+      "createdAt": "2024-01-02T00:00:00Z"
+    }
+  },
+  "owners": {
+    "owner_001": {
+      "name": "Alexander M.",
+      "edition": "The Midnight Bloom",
+      "editionId": "042",
+      "acquiredDate": "2023-10-24",
+      "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuCj5aHCOTDs5hsS9N0fVk4jQUjHifz-RxVKpgDb2lqg85_w1Fm5S2Tin1NEpPPpGptFy3xBNzhNSJO3Z974Iun0tsqcc46-Q9iobq0xRyWPD5rGxDiTBQcIUVeiUmoMDQrKnBFuFN2ehzuzQTLgjZcbd6SLFL5AHVJJrxaXRv-xw0UUQWql1W5cda6oF-25yIIkZ1KN4qW9v2rAsA3vVOaVfQEiBhDFe57GpCb8oLycvceOVi5kQby6T7Q5Ec-gcWh2TY1pPqUARas",
+      "description": "Collector based in New York. Passionate about wearable art and limited editions."
+    },
+    "owner_002": {
+      "name": "Isabella V.",
+      "edition": "The Obsidian Rose",
+      "editionId": "041",
+      "acquiredDate": "2023-09-12",
+      "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuCj5aHCOTDs5hsS9N0fVk4jQUjHifz-RxVKpgDb2lqg85_w1Fm5S2Tin1NEpPPpGptFy3xBNzhNSJO3Z974Iun0tsqcc46-Q9iobq0xRyWPD5rGxDiTBQcIUVeiUmoMDQrKnBFuFN2ehzuzQTLgjZcbd6SLFL5AHVJJrxaXRv-xw0UUQWql1W5cda6oF-25yIIkZ1KN4qW9v2rAsA3vVOaVfQEiBhDFe57GpCb8oLycvceOVi5kQby6T7Q5Ec-gcWh2TY1pPqUARas",
+      "description": "London-based collector. First piece in the 1of1 collection."
+    },
+    "owner_003": {
+      "name": "Julian R.",
+      "edition": "Eclipse Noir",
+      "editionId": "040",
+      "acquiredDate": "2023-08-05",
+      "image": "https://lh3.googleusercontent.com/aida-public/AB6AXuCj5aHCOTDs5hsS9N0fVk4jQUjHifz-RxVKpgDb2lqg85_w1Fm5S2Tin1NEpPPpGptFy3xBNzhNSJO3Z974Iun0tsqcc46-Q9iobq0xRyWPD5rGxDiTBQcIUVeiUmoMDQrKnBFuFN2ehzuzQTLgjZcbd6SLFL5AHVJJrxaXRv-xw0UUQWql1W5cda6oF-25yIIkZ1KN4qW9v2rAsA3vVOaVfQEiBhDFe57GpCb8oLycvceOVi5kQby6T7Q5Ec-gcWh2TY1pPqUARas",
+      "description": "Paris-based fashion enthusiast and art collector."
+    }
+  },
+  "bids": {}
+}

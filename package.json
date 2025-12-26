@@ -1,0 +1,16 @@
+{
+  "name": "1of1-backend",
+  "version": "1.0.0",
+  "description": "1of1 Luxury Editions Backend",
+  "main": "api.js",
+  "scripts": {
+    "dev": "node api.js",
+    "start": "node api.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "firebase-admin": "^11.0.0",
+    "dotenv": "^16.0.3"
+  }
+}
