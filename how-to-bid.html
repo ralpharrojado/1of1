@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>1of1 - How to Bid</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700&amp;family=Playfair+Display:ital,wght@0,400..900;1,400..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#D4AF37", // Luxury Gold
+                        "primary-dim": "#8A7020",
+                        "background-light": "#f6f8f6",
+                        "background-dark": "#050505", // Deep Black
+                        "card-dark": "#0F0F0F", // Almost Black
+                        "text-cream": "#F2F0E9", // Soft Cream
+                        "text-muted": "#888888",
+                    },
+                    fontFamily: {
+                        "sans": ["Manrope", "sans-serif"],
+                        "serif": ["Playfair Display", "serif"],
+                    },
+                    borderRadius: {"DEFAULT": "0px", "lg": "4px", "xl": "8px", "full": "9999px"}, // Sharper borders for gallery feel
+                    animation: {
+                        'fadeIn': 'fadeIn 1.2s ease-out forwards',
+                        'fadeInUp': 'fadeInUp 1s ease-out forwards',
+                    },
+                    keyframes: {
+                        fadeIn: {
+                            '0%': { opacity: '0' },
+                            '100%': { opacity: '1' },
+                        },
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        }
+                    }
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-gray-900 dark:text-text-cream font-sans overflow-x-hidden min-h-screen flex flex-col selection:bg-primary/30 selection:text-white">
+<header class="fixed top-0 w-full z-50 transition-all duration-300 bg-background-light/90 dark:bg-background-dark/90 backdrop-blur-md border-b border-black/5 dark:border-white/10">
+<div class="px-6 md:px-12 py-5 flex items-center justify-between max-w-[1440px] mx-auto w-full">
+<div class="flex items-center gap-3 cursor-pointer" onclick="navigate('home')">
+<span class="material-symbols-outlined text-primary text-2xl">diamond</span>
+<h1 class="text-xl font-bold tracking-widest font-serif">1of1</h1>
+</div>
+<nav class="hidden md:flex items-center gap-10" id="desktopNav">
+<a class="text-xs font-medium uppercase tracking-[0.2em] hover:text-primary transition-colors text-gray-500 dark:text-text-muted cursor-pointer" onclick="navigate('gallery')">Gallery</a>
+<a class="text-xs font-medium uppercase tracking-[0.2em] hover:text-primary transition-colors text-gray-500 dark:text-text-muted cursor-pointer" onclick="navigate('about')">About</a>
+<a class="text-xs font-medium uppercase tracking-[0.2em] hover:text-primary transition-colors text-gray-500 dark:text-text-muted cursor-pointer" onclick="navigate('journal')">Journal</a>
+</nav>
+<div class="flex items-center gap-6">
+<a class="text-xs font-medium uppercase tracking-[0.2em] hover:text-primary transition-colors hidden sm:block text-gray-500 dark:text-text-muted cursor-pointer" onclick="navigate('account')">Account</a>
+<button class="flex items-center justify-center size-10 border border-black/10 dark:border-white/10 hover:border-primary text-current transition-colors rounded-sm" onclick="navigate('cart')" title="Shopping Cart">
+<span class="material-symbols-outlined text-lg">shopping_bag</span>
+</button>
+<button class="md:hidden flex items-center justify-center size-10 text-current" id="mobileMenuBtn" onclick="toggleMobileMenu()" title="Toggle Menu">
+<span class="material-symbols-outlined text-2xl">menu</span>
+</button>
+</div>
+</div>
+<!-- Mobile Menu -->
+<nav id="mobileMenu" class="hidden md:hidden border-t border-black/5 dark:border-white/10 bg-background-light/95 dark:bg-background-dark/95 backdrop-blur-md">
+<div class="px-6 py-4 flex flex-col gap-4">
+<a class="text-xs font-medium uppercase tracking-[0.2em] hover:text-primary transition-colors text-gray-500 dark:text-text-muted cursor-pointer" onclick="navigate('gallery'); toggleMobileMenu()">Gallery</a>
+<a class="text-xs font-medium uppercase tracking-[0.2em] hover:text-primary transition-colors text-gray-500 dark:text-text-muted cursor-pointer" onclick="navigate('about'); toggleMobileMenu()">About</a>
+<a class="text-xs font-medium uppercase tracking-[0.2em] hover:text-primary transition-colors text-gray-500 dark:text-text-muted cursor-pointer" onclick="navigate('journal'); toggleMobileMenu()">Journal</a>
+<a class="text-xs font-medium uppercase tracking-[0.2em] hover:text-primary transition-colors text-gray-500 dark:text-text-muted cursor-pointer" onclick="navigate('account'); toggleMobileMenu()">Account</a>
+</div>
+</nav>
+</header>
+<main class="flex-grow flex flex-col items-center pt-32 pb-16 px-6 w-full max-w-[1440px] mx-auto relative z-10">
+<div class="fixed top-24 left-1/2 -translate-x-1/2 w-[80vw] h-[70vh] bg-primary/5 blur-[120px] rounded-full pointer-events-none -z-10"></div>
+<div class="text-center mb-12 max-w-xl mx-auto animate-fadeInUp">
+<h2 class="text-3xl md:text-5xl font-serif text-black dark:text-white tracking-tight mb-4">Acquiring the Unique</h2>
+<div class="h-px w-16 bg-primary/40 mx-auto my-6"></div>
+<p class="text-xs md:text-sm font-sans tracking-[0.2em] uppercase text-gray-500 dark:text-text-muted leading-loose">
+            A vertical journey from creation to possession.
+        </p>
+</div>
+<div class="w-full max-w-md mx-auto relative">
+<div class="absolute left-[19px] top-4 bottom-20 w-px bg-gradient-to-b from-primary/10 via-primary/30 to-transparent"></div>
+<div class="relative pl-14 pb-16 animate-fadeInUp group cursor-pointer transition-all hover:pl-16" style="animation-delay: 0.1s;" onclick="expandStep(1, this)">
+<div class="absolute left-0 top-0 w-10 h-10 flex items-center justify-center bg-background-light dark:bg-background-dark border border-black/10 dark:border-white/10 rounded-full z-10 transition-colors group-hover:border-primary/50 shadow-lg shadow-black/5">
+<span class="font-serif text-primary text-sm font-medium">I</span>
+</div>
+<div class="pt-1">
+<h3 class="text-lg font-serif text-black dark:text-text-cream mb-2">The Edition Drop</h3>
+<p class="text-gray-600 dark:text-text-muted text-sm leading-7 font-light">
+                    A single garment is revealed. We release one edition at a time. Notification is immediate; the window of opportunity is finite.
+                </p>
+</div>
+</div>
+<div class="relative pl-14 pb-16 animate-fadeInUp group cursor-pointer transition-all hover:pl-16" style="animation-delay: 0.2s;" onclick="expandStep(2, this)">
+<div class="absolute left-0 top-0 w-10 h-10 flex items-center justify-center bg-background-light dark:bg-background-dark border border-black/10 dark:border-white/10 rounded-full z-10 transition-colors group-hover:border-primary/50 shadow-lg shadow-black/5">
+<span class="font-serif text-primary text-sm font-medium">II</span>
+</div>
+<div class="pt-1">
+<h3 class="text-lg font-serif text-black dark:text-text-cream mb-2">The Private Bid</h3>
+<p class="text-gray-600 dark:text-text-muted text-sm leading-7 font-light">
+                    The gallery opens for bids. Values are placed blindly or openly, depending on the edition's protocol. The highest patron secures the right to own.
+                </p>
+</div>
+</div>
+<div class="relative pl-14 pb-16 animate-fadeInUp group cursor-pointer transition-all hover:pl-16" style="animation-delay: 0.3s;" onclick="expandStep(3, this)">
+<div class="absolute left-0 top-0 w-10 h-10 flex items-center justify-center bg-background-light dark:bg-background-dark border border-black/10 dark:border-white/10 rounded-full z-10 transition-colors group-hover:border-primary/50 shadow-lg shadow-black/5">
+<span class="font-serif text-primary text-sm font-medium">III</span>
+</div>
+<div class="pt-1">
+<h3 class="text-lg font-serif text-black dark:text-text-cream mb-2">Certification</h3>
+<p class="text-gray-600 dark:text-text-muted text-sm leading-7 font-light">
+                    The shirt is framed in archival glass. An NFC tag is sewn into the hem, linking the physical object to its digital certificate of authenticity on the blockchain.
+                </p>
+</div>
+</div>
+<div class="relative pl-14 pb-8 animate-fadeInUp group cursor-pointer transition-all hover:pl-16" style="animation-delay: 0.4s;" onclick="expandStep(4, this)">
+<div class="absolute left-0 top-0 w-10 h-10 flex items-center justify-center bg-background-light dark:bg-background-dark border border-black/10 dark:border-white/10 rounded-full z-10 transition-colors group-hover:border-primary/50 shadow-lg shadow-black/5">
+<span class="font-serif text-primary text-sm font-medium">IV</span>
+</div>
+<div class="pt-1">
+<h3 class="text-lg font-serif text-black dark:text-text-cream mb-2">White Glove Delivery</h3>
+<p class="text-gray-600 dark:text-text-muted text-sm leading-7 font-light">
+                    Secure, insured shipping worldwide. The edition arrives in a custom 1of1 flight case. Ownership is final.
+                </p>
+</div>
+</div>
+</div>
+<div class="mt-16 w-full max-w-md mx-auto animate-fadeInUp" style="animation-delay: 0.6s;">
+<div class="bg-white dark:bg-card-dark border border-primary/20 p-8 md:p-10 relative overflow-hidden transition-all hover:border-primary/40 cursor-pointer" onclick="readTerms()">
+<div class="absolute top-0 left-0 w-12 h-12 border-t border-l border-primary/30"></div>
+<div class="absolute bottom-0 right-0 w-12 h-12 border-b border-r border-primary/30"></div>
+<div class="flex items-start gap-4 mb-4">
+<span class="material-symbols-outlined text-primary text-2xl">verified</span>
+<h3 class="text-xl font-serif text-black dark:text-white">The 1of1 Policy</h3>
+</div>
+<p class="text-gray-600 dark:text-text-muted text-sm leading-7 font-light mb-6">
+                We do not reprint. We do not restock. Once an edition finds its owner, the pattern is retired forever. This is our guarantee of absolute scarcity and permanence in an age of mass production.
+            </p>
+<a class="inline-flex items-center text-[10px] uppercase tracking-[0.25em] text-primary hover:text-white transition-colors group" href="javascript:readTerms()">
+                Read Full Terms
+                <span class="material-symbols-outlined text-sm ml-2 group-hover:translate-x-1 transition-transform">arrow_right_alt</span>
+</a>
+</div>
+</div>
+</main>
+<footer class="w-full border-t border-white/5 py-12 bg-background-dark z-10 mt-auto">
+<div class="max-w-[1440px] mx-auto px-6 md:px-12 flex flex-col md:flex-row justify-between items-center gap-8">
+<div class="flex items-center gap-2 opacity-50 hover:opacity-100 transition-opacity cursor-pointer">
+<span class="material-symbols-outlined text-lg">diamond</span>
+<p class="text-xs tracking-widest text-text-muted">1of1 © 2024</p>
+</div>
+<div class="flex gap-8">
+<a class="text-text-muted hover:text-primary text-xs uppercase tracking-[0.2em] transition-colors cursor-pointer" onclick="navigate('instagram')" title="Visit Instagram">Instagram</a>
+<a class="text-text-muted hover:text-primary text-xs uppercase tracking-[0.2em] transition-colors cursor-pointer" onclick="navigate('twitter')" title="Visit Twitter">Twitter</a>
+<a class="text-text-muted hover:text-primary text-xs uppercase tracking-[0.2em] transition-colors cursor-pointer" onclick="navigate('legal')" title="Legal">Legal</a>
+</div>
+</div>
+</footer>
+
+<script>
+  // Mobile Menu Toggle
+  function toggleMobileMenu() {
+    const menu = document.getElementById('mobileMenu');
+    menu.classList.toggle('hidden');
+  }
+
+  // Navigation Handler
+  function navigate(page) {
+    const pages = {
+      'home': 'index.html',
+      'gallery': 'gallery.html',
+      'about': 'about.html',
+      'journal': 'journal.html',
+      'account': 'account.html',
+      'cart': 'cart.html',
+      'instagram': 'https://instagram.com',
+      'twitter': 'https://twitter.com',
+      'legal': 'legal.html'
+    };
+    
+    const destination = pages[page];
+    if (destination) {
+      if (destination.startsWith('http')) {
+        window.open(destination, '_blank');
+      } else {
+        // Local navigation - in production, replace with actual page
+        console.log(`Navigating to: ${destination}`);
+        alert(`Opening ${page} page...`);
+      }
+    }
+  }
+
+  // Expand Step Details
+  function expandStep(stepNum, element) {
+    const steps = {
+      1: 'The Edition Drop\n\nA single garment is revealed exclusively through 1of1. We release one edition at a time to maintain absolute rarity. Collectors receive notification immediately upon release. The window of opportunity is intentionally finite—typically 24-72 hours depending on the edition.',
+      2: 'The Private Bid\n\nOnce notified, registered collectors enter our secure bidding platform. Values are placed either blindly (sealed until auction close) or openly (visible to all bidders), depending on each edition\'s specific protocol. The highest bidder secures the exclusive right to own that edition forever.',
+      3: 'Certification\n\nUpon winning, the garment is carefully framed in museum-grade archival glass. An NFC tag is sewn into the hem, creating a permanent bridge between the physical object and its digital certificate of authenticity stored on the blockchain. This ensures provenance and ownership are permanently recorded.',
+      4: 'White Glove Delivery\n\nYour edition is prepared for its journey. Secure, fully insured shipping is arranged worldwide. The piece arrives in a custom 1of1 flight case with full documentation. Delivery includes signature verification and final condition assessment. Your ownership is now complete and permanent.'
+    };
+    
+    alert(steps[stepNum]);
+  }
+
+  // Read Terms
+  function readTerms() {
+    alert('The 1of1 Policy\n\n' +
+          'We do not reprint. We do not restock. We do not compromise on scarcity.\n\n' +
+          'Once an edition finds its owner, the pattern is retired forever. The molds are destroyed. The documentation is sealed. This is our absolute guarantee of scarcity and permanence in an age of mass production and infinite digital reproduction.\n\n' +
+          'Each 1of1 edition represents a commitment to true, verifiable uniqueness. This policy is non-negotiable and is encoded into every transaction.\n\n' +
+          'For complete terms and conditions, please visit our legal page.');
+  }
+
+  // Add smooth scroll behavior
+  document.addEventListener('DOMContentLoaded', function() {
+    // Any initialization code can go here
+    console.log('How to Bid page loaded successfully');
+  });
+</script>
+</body></html>
